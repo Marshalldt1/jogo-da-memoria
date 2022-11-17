@@ -43,7 +43,8 @@ function gameFunc(array) {
     let namePersonagem = e.target.name;
     const checarCardValido = e.target.classList.contains('card');
     const cardNaoSelec = !e.target.classList.contains('active');
-
+    console.log(e.target)
+    e.target.style.animationName = 'teste'
     if (checarCardValido) {
       if ((contador < 2) && cardNaoSelec) {
         if (contador < 1 ) {
@@ -64,8 +65,12 @@ function gameFunc(array) {
         setTimeout(() =>  {
             allCards[primeiroAlvo].src = urlImagemBack;
             allCards[segundoAlvo].src = urlImagemBack;
+            
+            allCards[primeiroAlvo].style.animationName = ''
+            allCards[segundoAlvo].style.animationName = ''
+
             contador = 0;
-          }, 650);
+          }, 800);
         }
         if (
           (array[primeiroAlvo] === array[segundoAlvo]) &&
@@ -74,6 +79,9 @@ function gameFunc(array) {
             allCards[primeiroAlvo].classList.add('active');
             allCards[segundoAlvo].classList.add('active');
             
+            allCards[primeiroAlvo].style.animationName = 'escurecer'
+            allCards[segundoAlvo].style.animationName = 'escurecer'
+
             h2PlacarEl.textContent = `Você já acertou: ${pontos + 1} :)`
             pontos++
 
@@ -84,7 +92,8 @@ function gameFunc(array) {
               }
             })
             if(pontos === (array.length / 2)){
-              mostrarModalDePontos();
+              console.log('oi')
+              setTimeout(mostrarModalDePontos,2000);
               pontos = 0
             }
             contador = 0;
