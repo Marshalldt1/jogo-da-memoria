@@ -7,6 +7,7 @@ import {
   dificuldadeNormal,
   dificuldadeDificil,
 } from './modules/allArrays.js';
+import mudarOrdemArray from './modules/mudarOrdemArray.js';
 
 const dificuldadeEl = document.querySelector('[data-js="dificuldade"]');
 const botaoIniciarEl = document.querySelector('[data-js="iniciarJogo"]');
@@ -26,15 +27,6 @@ const pontuacao = (() => {
     },
   };
 })();
-
-function mudarOrdemArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
 
 function gameFunc(array) {
   const allCards = document.querySelectorAll('.card');
@@ -73,7 +65,7 @@ function gameFunc(array) {
             allCards[primeiroAlvo].src = urlImagemBack;
             allCards[segundoAlvo].src = urlImagemBack;
             contador = 0;
-          }, 300);
+          }, 650);
         }
         if (
           (array[primeiroAlvo] === array[segundoAlvo]) &&
